@@ -8,6 +8,7 @@ using namespace std;
 
 GameMap::GameMap()
     {   
+        IsGameOver=false;
         PlayerCell=NULL;
         LoadMapFromFile();
     }
@@ -32,7 +33,23 @@ void GameMap::DrawIntro()
                 cout<<"fatal error intro not loaded" <<endl;
             }
     }
+void GameMap::DrawTreasure()
+    {
+        string line;
+        ifstream Myfile("designs/treasure.txt");
 
+        if (Myfile.is_open())
+            {
+                while (getline(Myfile, line))
+                    {
+                        cout <<line <<endl;
+                    }
+            }
+        else
+            {
+                cout<<"fatal error treasure not loaded" <<endl;
+            }
+    }
 
 void GameMap::Draw()
     {
@@ -46,22 +63,30 @@ void GameMap::Draw()
         }  
     }
 
-bool GameMap::SetPlayerCell(int Playerx, int Playery)
+string GameMap::SetPlayerCell(int Playerx, int Playery)
     {
         if(cells[Playery][Playerx].isBlocked()==false)
             {
-                if (PlayerCell!=NULL)
+                if(cells[Playery][Playerx].isTreasure()==true)
                     {
-                        PlayerCell->id=' ';
+                        DrawTreasure();
+                        IsGameOver=true;
+                        return "Treasure";
                     }
-
-                PlayerCell=&cells[Playery][Playerx];
-                PlayerCell->id='H';
-                return true;
+                else
+                    {
+                         if (PlayerCell!=NULL)
+                            {
+                                PlayerCell->id=' ';
+                            }
+                        PlayerCell=&cells[Playery][Playerx];
+                        PlayerCell->id='H';
+                        return "NotBlocked";
+                    }
             }
         else 
             {
-                return false;
+                return "IsBlocked";
             }
     }
 

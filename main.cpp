@@ -6,25 +6,29 @@ using namespace std;
 
 int main()
     {
-        bool isGameOver=false;
         GameMap map;
         Player hero;
         map.DrawIntro();
         cout<<"Inicia el juego!!"<<endl;
         map.Draw();
-        while (isGameOver==false)
+        while (map.IsGameOver==false)
             {
                 hero.ImputPlayer();
-                if(map.SetPlayerCell(hero.x, hero.y))
-                    {
+                if(map.SetPlayerCell(hero.x, hero.y)=="NotBlocked")
+                    { 
                         map.Draw();
                     }
-                else
+                if (map.SetPlayerCell(hero.x, hero.y)=="IsBlocked")
+        
                     {
                         hero.ResetPosition();
                         map.Draw();
                     }
-
+                 if (map.SetPlayerCell(hero.x, hero.y)=="Treasure")
+        
+                    {
+                        map.DrawTreasure();
+                    }
             }
       
     }

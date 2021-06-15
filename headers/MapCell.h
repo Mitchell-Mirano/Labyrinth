@@ -10,7 +10,8 @@ class MapCell
             
             char id;
 
-            bool isBlocked();                        
+            bool isBlocked();   
+            bool isTreasure();                     
 
         protected:
 

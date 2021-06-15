@@ -18,3 +18,15 @@ bool MapCell::isBlocked()
                 return false;
             }
     }
+
+bool MapCell::isTreasure()
+    {
+        if (id=='$')
+            {
+                return true;
+            }
+        else
+            {
+                return false;
+            }
+    }

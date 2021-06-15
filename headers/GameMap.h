@@ -9,11 +9,13 @@ class GameMap
             /* data */
         public:
             GameMap();
+            bool IsGameOver;
             MapCell* PlayerCell;
             MapCell cells[15][10];
             void DrawIntro();
             void Draw();
-            bool SetPlayerCell(int Playerx, int Playery);
+            void DrawTreasure();
+            string SetPlayerCell(int Playerx, int Playery);
 
         protected:
             void LoadMapFromFile();
