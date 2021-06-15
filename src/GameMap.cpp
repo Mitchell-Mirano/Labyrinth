@@ -3,7 +3,6 @@
 #include <fstream>
 
 
-
 using namespace std;
 
 GameMap::GameMap()
@@ -11,6 +10,7 @@ GameMap::GameMap()
         IsGameOver=false;
         PlayerCell=NULL;
         LoadMapFromFile();
+        SetPlayerCell(1,1);
     }
 
 
@@ -55,7 +55,7 @@ void GameMap::Draw()
     {
         for (int x = 0; x < 15; x++)
         {
-            for (int y = 0; y <10; y++)
+            for (int y = 0; y <15; y++)
             {
               cout<<cells[x][y].id;
             }

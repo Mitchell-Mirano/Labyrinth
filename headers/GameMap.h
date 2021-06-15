@@ -11,7 +11,7 @@ class GameMap
             GameMap();
             bool IsGameOver;
             MapCell* PlayerCell;
-            MapCell cells[15][10];
+            MapCell cells[15][15];
             void DrawIntro();
             void Draw();
             void DrawTreasure();
