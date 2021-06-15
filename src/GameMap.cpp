@@ -17,7 +17,7 @@ GameMap::GameMap()
 void GameMap::DrawIntro()
     {
         string line;
-        ifstream Myfile("intro.txt");
+        ifstream Myfile("designs/intro.txt");
 
         if (Myfile.is_open())
             {
@@ -68,7 +68,7 @@ bool GameMap::SetPlayerCell(int Playerx, int Playery)
 void GameMap::LoadMapFromFile()
     {
         string line;
-        ifstream Myfile("map.txt");
+        ifstream Myfile("designs/map.txt");
         int row=0;
         if (Myfile.is_open())
             {
